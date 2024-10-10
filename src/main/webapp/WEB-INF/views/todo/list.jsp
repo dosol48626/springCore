@@ -11,6 +11,11 @@
   <title>Title</title>
 </head>
 <body>
-<h2>List Page@@</h2>
+  <h2>List Page@@</h2>
+  <a href="/todo/register">register</a>
+  <h2>Title : ${todoDTO.title}</h2>
+  <h2>Writer : ${todoDTO.writer}</h2>
+  <h2>DueDate : ${todoDTO.dueDate}</h2>
+  <h2>Finished : ${todoDTO.finished}</h2>
 </body>
 </html>

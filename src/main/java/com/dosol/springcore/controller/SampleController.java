@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -45,5 +46,21 @@ public class SampleController {
         log.info("ex3");
         log.info(dueDate);
         model.addAttribute("dueDate", dueDate);
+    }
+
+    @GetMapping("ex4")
+    public String ex4(RedirectAttributes redirectAttributes) {
+        log.info("ex4");
+        redirectAttributes.addFlashAttribute("result", "Success");
+        //addFlashAttri는 1회성이라서 새로고침하면 값이 사라짐.
+        redirectAttributes.addAttribute("name", "aaaa");
+        return "redirect:/ex5";
+    }
+
+    @GetMapping("/ex5")
+    public void ex5(@RequestParam("name") String name, Model model){
+        log.info("ex5");
+        log.info(name);
+        model.addAttribute("name", name);
     }
 }
