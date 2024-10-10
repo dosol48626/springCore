@@ -2,6 +2,7 @@ package com.dosol.springcore.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,11 +23,15 @@ public class SampleController {
     @GetMapping("/ex1")
     public void ex1(@RequestParam("name") String name,
                     @RequestParam("age") int age,
-                    @RequestParam("gender") String gender) {
+                    @RequestParam("gender") String gender,
+                    Model model){
         log.info("ex1");
         log.info(name);
         log.info(age);
         log.info(gender);
+        model.addAttribute("name", name);
+        model.addAttribute("age", age);
+        model.addAttribute("gender", gender);
     }
 
     @GetMapping("/ex2/{name}")
@@ -36,8 +41,9 @@ public class SampleController {
     }
 
     @GetMapping("/ex3")
-    public void ex3(@RequestParam("dueDate") LocalDate dueDate){
+    public void ex3(@RequestParam("dueDate") LocalDate dueDate, Model model){
         log.info("ex3");
         log.info(dueDate);
+        model.addAttribute("dueDate", dueDate);
     }
 }

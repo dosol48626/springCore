@@ -1,5 +1,6 @@
 package com.dosol.springcore.controller;
 
+import com.dosol.springcore.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +30,9 @@ public class TodoController {
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
     @PostMapping("/register")
-    public String registerpost(){
+    public String registerpost(TodoDTO todoDTO, Model model){
         log.info("registerPost");
+        model.addAttribute("dto", todoDTO);
         return "/todo/list";
     }
 }
