@@ -26,6 +26,7 @@
                 <prop key="prepStmtCacheSqlLimit">2048</prop>
             </props>
         </property>
+<!--        위에꺼가 캐시 설정하는 그런거네. -->
     </bean>
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
           destroy-method="close">

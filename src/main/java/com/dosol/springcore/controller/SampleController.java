@@ -33,6 +33,7 @@ public class SampleController {
         model.addAttribute("name", name);
         model.addAttribute("age", age);
         model.addAttribute("gender", gender);
+//        void라서 리턴이 없고, /ex1이게 리턴된다.
     }
 
     @GetMapping("/ex2/{name}")
@@ -55,6 +56,7 @@ public class SampleController {
         //addFlashAttri는 1회성이라서 새로고침하면 값이 사라짐.
         redirectAttributes.addAttribute("name", "aaaa");
         return "redirect:/ex5";
+        //여기서는 void가 아니고 다른거라서 return가능해짐.
     }
 
     @GetMapping("/ex5")
@@ -62,5 +64,13 @@ public class SampleController {
         log.info("ex5");
         log.info(name);
         model.addAttribute("name", name);
+    }
+
+    @GetMapping("/ex6")
+    public void ex6(@RequestParam("p1") String p1,
+                    @RequestParam("p2") int p2){
+        log.info("ex6");
+        log.info(p1);
+        log.info(p2);
     }
 }
